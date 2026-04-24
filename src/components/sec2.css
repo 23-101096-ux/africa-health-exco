@@ -1,0 +1,125 @@
+.cards-section {
+    position: relative !important;
+    margin-top: 100px !important;      
+    margin-bottom: 50px;          
+    z-index: 10;                  
+    display: block;
+    background-color: transparent;
+    padding: 0 80px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    width: 100%;
+  }
+
+
+  .card-large {
+    grid-column: span 2;
+  }
+
+ 
+  .card-creative {
+    grid-column: span 2;
+  }
+  
+  /* ===== CARD BASE ===== */
+  .card {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    background: #1a1a1a;
+    transition: transform 0.15s ease, border-color 0.3s ease;
+    will-change: transform;
+  }
+  
+  .card:hover {
+    border-color: rgba(232, 139, 42, 0.3);
+  }
+  
+
+  .card-number {
+    position: absolute;
+    bottom: -20px;
+    right: 20px;
+    font-size: 140px;
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+
+  .card-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  
+  .card-text {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    line-height: 1.7;
+    max-width: 380px;
+  }
+  
+  /* ===== STAT CARDS ===== */
+  .card-stat {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  
+  .card-stat-label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  
+
+  .card-stat-orange .card-stat {
+    color: #E88B2A;
+  }
+  
+  .card-stat-white .card-stat {
+    color: #fff;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1200px) {
+    .cards-section {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cards-section {
+      padding: 0 20px;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .card-large,
+    .card-creative {
+      grid-column: span 1;
+    }
+
+    .card-stat {
+      font-size: 56px;
+    }
+  }
