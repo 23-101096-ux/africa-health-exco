@@ -1,0 +1,56 @@
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;            /* Ensure the header itself is full width */
+  z-index: 9999;
+  background-color: transparent;
+  display: block;         /* Changed from flex to let the container handle it */
+}
+.header-container {
+  width: 100vw;           /* Force it to be the full width of the screen */
+  max-width: none;        /* Kill any restricted width from other files */
+  margin: 0 !important;   /* Kill any centering */
+  padding: 0 40px;        /* Control the gap from the edge here */
+  
+  display: flex;
+  justify-content: space-between; /* Pushes children to far opposite ends */
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  width: 120px;
+  display: block;
+}
+
+.nav-component {
+  display: flex;
+  align-items: center;
+}
+
+.nav-component ul {
+  display: flex;
+  list-style: none;
+  gap: 35px; 
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff; 
+  font-weight: 500;
+  transition: 0.3s;
+  font-size: 1rem;
+}
+
+.nav-link.active {
+  color: #FFA726; 
+  font-weight: bold;
+}
