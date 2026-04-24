@@ -1,8 +1,8 @@
 html, body, #root {
-  min-height: 100%; /* غيرنا height لـ min-height */
+  min-height: 100%; 
   margin: 0;
   padding: 0;
-  overflow-x: hidden; /* عشان نمنع أي ظهور لسكيرول أفقي */
+  overflow-x: hidden; 
 }
 .home-page {
   position: relative;
