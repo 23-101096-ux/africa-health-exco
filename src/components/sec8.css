@@ -1,0 +1,255 @@
+.map-section {
+    padding: 80px;
+    box-sizing: border-box;
+  }
+  
+  .map-layout {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  
+  .map-left {
+    flex: 1;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 28px;
+  }
+  
+  .map-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 22px;
+    color: #fff;
+    margin: 0 0 24px 0;
+  }
+  
+  .halls-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  
+
+  .hall-card {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,0.07);
+    min-height: 160px;
+    transition: border-color 0.3s;
+  }
+  
+  .hall-card:hover { border-color: rgba(232,139,42,0.5); }
+  .hall-card.active { border-color: #E88B2A; }
+  
+  .hall-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+  }
+  
+  .hall-info {
+    position: relative;
+    z-index: 2;
+    padding: 18px;
+  }
+  
+  .hall-icon {
+    width: 42px;
+    height: 42px;
+    object-fit: contain;
+    background: #E88B2A;
+    border-radius: 10px;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    display: block;
+  }
+  
+  .hall-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 10px 0;
+  }
+  
+  .hall-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .hall-pills span {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+    background: rgba(255,255,255,0.06);
+  }
+  
+  .hall-pills .more {
+    border-color: rgba(232,139,42,0.4);
+    color: #E88B2A;
+    background: rgba(232,139,42,0.08);
+  }
+
+  .map-right {
+    width: 320px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  
+  .details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 22px;
+  }
+  
+  .details-header h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20px;
+    color: #fff;
+    margin: 0;
+  }
+  
+  .details-header button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.5);
+    font-size: 22px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+  }
+  
+  .details-header button:hover { color: #fff; }
+  
+  .details-body {
+    padding: 0 22px 24px;
+  }
+  
+  .details-icon {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    background: #E88B2A;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .details-icon img{
+    width: 40px;
+  }
+  
+  .details-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px 0;
+  }
+  
+  .details-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin: 0 0 14px 0;
+  }
+  
+  .details-grid-img {
+    width: 100%;
+    border-radius: 8px;
+    display: block;
+  }
+  .booths-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+   
+  .booth-box {
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 8px;
+    padding: 12px 6px;
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+   
+  .booth-box:hover {
+    border-color: #E88B2A;
+    color: #E88B2A;
+  }
+   
+  
+  /* ── RESPONSIVE ── */
+  /* @media (max-width: 900px) {
+    .map-layout { flex-direction: column; }
+    .map-right { width: 100%; }
+  }
+  
+  @media (max-width: 600px) {
+    .map-section { padding: 40px 20px; }
+    .halls-grid { grid-template-columns: 1fr; }
+  } */
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1100px) {
+    .map-right {
+      width: 280px;
+    }
+  }
+  
+  @media (max-width: 900px) {
+    .map-section {
+      padding: 60px 40px 80px;
+    }
+  
+    .map-layout {
+      flex-direction: column;
+    }
+  
+    .map-left {
+      width: 100%;
+    }
+  
+    .map-right {
+      width: 100%;
+    }
+  
+    .map-right.hidden {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .map-section {
+      padding: 50px 20px 60px;
+    }
+  
+    .halls-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .details-booths-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  
+    .map-left-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
