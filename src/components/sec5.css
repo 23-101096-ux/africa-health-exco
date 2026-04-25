@@ -1,17 +1,13 @@
 .exhibitors-section {
     width: 100%;
-    background: #161616;
     padding: 60px 60px 80px;
     overflow: hidden;
   }
-   
-
   .exhibitors-heading {
     position: relative;
     margin-bottom: 40px;
     line-height: 1;
   }
-   
   .heading-ghost {
     font-family: 'Playfair Display', serif;
     font-size: clamp(80px, 10vw, 140px);
@@ -23,7 +19,6 @@
     letter-spacing: 0.05em;
     user-select: none;
   }
-   
   .heading-main {
     font-family: 'Playfair Display', serif;
     font-size: clamp(50px, 7vw, 90px);
@@ -33,7 +28,6 @@
     line-height: 1;
     margin-top: -20px;
   }
-   
 
   .exhibitors-content {
     display: grid;
@@ -42,7 +36,6 @@
     align-items: center;
   }
    
-  
   .exhibitor-image-wrap {
     border-radius: 12px;
     overflow: hidden;
@@ -154,10 +147,16 @@
     .exhibitor-name {
       font-size: 52px;
     }
+    .exhibitor-desc {
+      width: 95%;
+      
+    }
+   
   }
    
   
   @media (max-width: 1200px) {
+
     .exhibitors-section {
       padding: 50px 40px 60px;
     }
@@ -188,6 +187,15 @@
    
   
   @media (max-width: 1024px) {
+    
+    .exhibitor-image-wrap {
+      width: 90%;
+    }
+
+    .exhibitor-img{
+      width: 100%;
+    }
+
     .exhibitors-section {
       padding: 45px 32px 55px;
     }
@@ -222,6 +230,15 @@
    
  
   @media (max-width: 768px) {
+
+    .exhibitor-image-wrap {
+      width: 90%;
+    }
+
+    .exhibitor-img{
+      width: 100%;
+    }
+
     .exhibitors-section {
       padding: 40px 24px 50px;
     }
@@ -249,7 +266,7 @@
     }
    
     .exhibitor-desc {
-      max-width: 100%;
+      width: 90%;
       font-size: 14px;
     }
    
@@ -260,6 +277,14 @@
    
 
   @media (max-width: 480px) {
+    .exhibitor-image-wrap {
+      width: 90%;
+    }
+
+    .exhibitor-img{
+      width: 100%;
+    }
+    
     .exhibitors-section {
       padding: 30px 16px 40px;
     }
@@ -279,6 +304,7 @@
    
     .exhibitor-desc {
       font-size: 13px;
+      width: 90%;
       line-height: 1.65;
     }
    

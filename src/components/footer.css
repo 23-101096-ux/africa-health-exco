@@ -34,13 +34,14 @@
   
   .footer-logo-text .logo-line2 {
     font-family: 'Playfair Display', serif;
-    font-size: 112px;
+    font-size: 122px;
     font-weight: 400;
     color: transparent;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
     display: block;
-    line-height: 0.95;
+    /* line-height: 0.95; */
     letter-spacing: -1px;
+    margin-top: 0px;
   }
   
   .footer-tagline {
@@ -85,7 +86,6 @@
     color: #fff;
   }
   
-  /* ===== BOTTOM BAR ===== */
   .footer-bottom {
     border-top: 0.5px solid rgba(255, 255, 255, 0.08);
     padding: 20px 60px;
