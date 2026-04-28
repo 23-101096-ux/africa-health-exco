@@ -7,8 +7,6 @@ import Sec1 from '../components/sec1';
 import Sec3 from '../components/sec3';
 import Sec4 from '../components/sec4';
 import Footer from '../components/footer';
-// import BlackTickter from '../components/blacktickter';
-
 
 const Home = () => {
   return (<>

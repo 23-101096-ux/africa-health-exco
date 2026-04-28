@@ -1,0 +1,287 @@
+
+.cf-section {
+    width: 90%;
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: center;
+    gap: 0;
+    padding: 80px 60px;
+  }
+  
+  
+  .cf-left {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-right: 60px;
+  }
+  
+ 
+  .cf-weather-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 20px 24px;
+    width: fit-content;
+    background: rgba(255, 255, 255, 0.02);
+  }
+  
+  .cf-weather-temp {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 400;
+    color: #E88B2A;
+    line-height: 1;
+  }
+  
+  .cf-weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .cf-weather-city,
+  .cf-weather-status {
+    font-family: 'Courier Prime', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+    display: block;
+  }
+  
+
+  .cf-left-text {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .cf-left-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+  }
+  
+  .cf-left-orange {
+    color: #E88B2A;
+    font-style: italic;
+  }
+  
+  .cf-left-desc {
+    font-family: 'Courier Prime', monospace;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: rgba(255, 255, 255, 0.25);
+    line-height: 1.8;
+  }
+  
+
+  .cf-right {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.02);
+    padding: 48px 48px;
+    border-radius: 4px;
+  }
+  
+  .cf-form-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+  
+
+  .cf-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .cf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .cf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .cf-field label {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .cf-field input,
+  .cf-field textarea {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    padding: 14px 16px;
+    outline: none;
+    resize: none;
+    transition: border-color 0.25s ease;
+    border-radius: 2px;
+    width: 100%;
+  }
+  
+  .cf-field input::placeholder,
+  .cf-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .cf-field input:focus,
+  .cf-field textarea:focus {
+    border-color: rgba(232, 139, 42, 0.5);
+  }
+  
+
+  .cf-submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #e03a1e, #E88B2A);
+    color: #fff;
+    border: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 4px;
+    transition: opacity 0.25s ease, transform 0.2s ease;
+    margin-top: 4px;
+  }
+  
+  .cf-submit-btn:hover:not(:disabled) {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+  
+  .cf-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+
+  .cf-error {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px;
+    color: #e05555;
+    letter-spacing: 0.04em;
+  }
+  
+
+  .cf-success {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 60px 0;
+    text-align: center;
+  }
+  
+  .cf-success-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #E88B2A;
+    color: #E88B2A;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .cf-success h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+  }
+  
+  .cf-success p {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.05em;
+  }
+  
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1200px) {
+    .cf-section {
+      padding: 70px 40px;
+    }
+  
+    .cf-right {
+      padding: 40px;
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .cf-section {
+      grid-template-columns: 1fr;
+      padding: 60px 32px;
+      gap: 48px;
+    }
+  
+    .cf-left {
+      padding-right: 0;
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .cf-section {
+      padding: 40px 24px;
+    }
+  
+    .cf-row {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+  
+    .cf-right {
+      padding: 28px 24px;
+    }
+  
+    .cf-left {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .cf-section {
+      padding: 30px 16px;
+    }
+  
+    .cf-right {
+      padding: 24px 16px;
+    }
+  
+    .cf-form-title {
+      font-size: 22px;
+    }
+  }

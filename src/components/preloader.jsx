@@ -56,7 +56,7 @@ const Preloader = ({ onComplete }) => {
   return (
     <div className="preloader" ref={loaderRef}>
 
-      {/* Column bars (wipe-out effect) */}
+  
       <div className="pl-bars">
         {bars.map((_, i) => (
           <div key={i} className="pl-bar" />
@@ -93,7 +93,7 @@ const Preloader = ({ onComplete }) => {
           <span className="pl-word pl-orange">Africa</span>
         </div>
 
-        <div className="pl-tagline">Cairo · May 15–18, 2026</div>
+        <div className="pl-tagline">Wellcome to our websiet</div>
 
       </div>
 

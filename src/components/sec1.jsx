@@ -126,7 +126,7 @@ const Sec1 = () => {
           </div>
         </div>
 
-        {/* RIGHT */}
+        
         <div className="hero-right">
           <div className="rings-wrap">
             <div className="ring ring-outer" />
@@ -147,9 +147,9 @@ const Sec1 = () => {
               camera-orbit="0deg 80deg 200%"
               style={{ background: 'transparent' }}
             >
-              <div slot="poster" className="model-poster">
+              {/* <div slot="poster" className="model-poster">
                 <div style={{ color: '#E8732A' }}>Loading...</div>
-              </div>
+              </div> */}
             </model-viewer>
           </div>
 

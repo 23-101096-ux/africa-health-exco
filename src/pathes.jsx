@@ -6,6 +6,8 @@ import Exbition from './pages/exbition';
 import FloorPlan from './pages/floorplan';
 import Register from './pages/register';
 import Preloader from './components/preloader'; 
+import Contact from './pages/contact';
+import Error from './pages/error';
 
 const RouteChangePreloader = ({ children }) => {
   const location = useLocation();
@@ -37,6 +39,8 @@ const Routess = () => {
           <Route path="/exbition"  element={<Exbition />} />
           <Route path="/floorplan" element={<FloorPlan />} />
           <Route path="/register"  element={<Register />} />
+          <Route path="/contact"  element={<Contact />} />
+          <Route path="*"  element={<Error />} />
         </Routes>
       </RouteChangePreloader>
     </BrowserRouter>

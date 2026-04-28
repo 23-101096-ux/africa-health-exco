@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './header.css';
 import myLogo from '../assets/image 1.png';
 
 const Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="main-header">
       <div className="header-container">
+
         <div className="logo">
           <img src={myLogo} alt="Health Africa Logo" />
         </div>
 
-        <nav className="nav-component">
+        
+        <div
+          className={`menu-toggle ${menuOpen ? "open" : ""}`}
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        
+        <nav className={`nav-component ${menuOpen ? "open" : ""}`}>
           <ul>
             <li>
               <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
@@ -40,6 +54,7 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+
       </div>
     </header>
   );
