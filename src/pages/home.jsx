@@ -6,8 +6,8 @@ import Sec2 from '../components/sec2';
 import Sec1 from '../components/sec1';
 import Sec3 from '../components/sec3';
 import Sec4 from '../components/sec4';
-import Footer from '../components/footer';
-import BlackTickter from '../components/blacktickter';
+// import Footer from '../components/footer';
+// import BlackTickter from '../components/blacktickter';
 
 
 const Home = () => {
@@ -15,11 +15,11 @@ const Home = () => {
     
       <div className="home-page">
        <Sec1 />
-        <Sec2 />
+     <Sec2 />
         <Sec3 />
-        <Sec4 />
-        <BlackTickter />
-        <Footer />
+        <Sec4 /> 
+      
+        {/* <Footer />  */}
       </div>
       </>);
 };

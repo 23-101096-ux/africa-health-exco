@@ -1,94 +1,100 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import './sec2.css';
 
+const cards = [
+  {
+    id: 'card1',
+    className: 'card-large',
+    title: 'Cultural Innovation',
+    text: 'Explore the latest in African art, design, and creative technology shaping the global narrative.',
+    number: '01',
+  },
+  {
+    id: 'card2',
+    className: 'card-stat-orange',
+    stat: '500+',
+    statLabel: 'Exhibitors',
+    number: '02',
+  },
+  {
+    id: 'card3',
+    className: 'card-stat-white',
+    stat: '20k',
+    statLabel: 'Attendees',
+    number: '03',
+  },
+  {
+    id: 'card4',
+    className: 'card-creative',
+    title: 'Creative Technology',
+    text: 'Discover cutting-edge tools, AI platforms, and digital mediums driving the next wave of pan-African creation.',
+    number: '04',
+  },
+];
+
 const Sec2 = () => {
-  const [x1, setX1] = useState('0px');
-  const [y1, setY1] = useState('0px');
-  
-  const [x2, setX2] = useState('0px');
-  const [y2, setY2] = useState('0px');
-  
-  const [x3, setX3] = useState('0px');
-  const [y3, setY3] = useState('0px');
-  
-  const [x4, setX4] = useState('0px');
-  const [y4, setY4] = useState('0px');
+  useEffect(() => {
+    const gsap = window.gsap;
+    const ScrollTrigger = window.ScrollTrigger;
+    if (!gsap || !ScrollTrigger) return;
 
-  const handleMove1 = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setX1(((e.clientX - (rect.left + rect.width / 2)) / 10) + 'px');
-    setY1(((e.clientY - (rect.top + rect.height / 2)) / 10) + 'px');
+    gsap.from(['#card1', '#card2', '#card3', '#card4', '#card5'], {
+      scrollTrigger: { trigger: '#cardsSection', start: 'top 75%' },
+      y: 60,
+      opacity: 0,
+      duration: 0.7,
+      ease: 'power3.out',
+      stagger: 0.1,
+    });
+  }, []);
+
+  const handleTilt = (e, el) => {
+    const gsap = window.gsap;
+    if (!gsap) return;
+    const r = el.getBoundingClientRect();
+    gsap.to(el, {
+      rotateY: (e.clientX - (r.left + r.width / 2)) / 15,
+      rotateX: -((e.clientY - (r.top + r.height / 2)) / 15),
+      transformPerspective: 800,
+      ease: 'power1.out',
+      duration: 0.3,
+    });
   };
 
-  const handleMove2 = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setX2(((e.clientX - (rect.left + rect.width / 2)) / 10) + 'px');
-    setY2(((e.clientY - (rect.top + rect.height / 2)) / 10) + 'px');
-  };
-
-  const handleMove3 = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setX3(((e.clientX - (rect.left + rect.width / 2)) / 10) + 'px');
-    setY3(((e.clientY - (rect.top + rect.height / 2)) / 10) + 'px');
-  };
-
-  const handleMove4 = (e) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setX4(((e.clientX - (rect.left + rect.width / 2)) / 10) + 'px');
-    setY4(((e.clientY - (rect.top + rect.height / 2)) / 10) + 'px');
+  const handleReset = (el) => {
+    const gsap = window.gsap;
+    if (!gsap) return;
+    gsap.to(el, { rotateY: 0, rotateX: 0, duration: 0.5, ease: 'elastic.out(1, 0.5)' });
   };
 
   return (
-    <section className="cards-section">
+    <section className="cards-section" id="cardsSection">
+      <div className="section-header">
+        <div className="section-tag">What to expect</div>
+        <div className="section-location">Cairo International Convention Centre</div>
+      </div>
+
       <div className="grid">
-        
-        {/* Card 1 — spans 2 cols */}
-        <div
-          className="card card-large"
-          onMouseMove={handleMove1}
-          onMouseLeave={() => { setX1('0px'); setY1('0px'); }}
-          style={{ '--x': x1, '--y': y1 }}
-        >
-          <div className="card-title">Cultural Innovation</div>
-          <div className="card-text">Explore the latest in African art, design, and creative technology shaping the global narrative.</div>
-          <div className="card-number">01</div>
-        </div>
+        {cards.map(({ id, className, title, text, stat, statLabel, number }) => (
+          <div
+            key={id}
+            id={id}
+            className={`card ${className}`}
+            onMouseMove={(e) => handleTilt(e, e.currentTarget)}
+            onMouseLeave={(e) => handleReset(e.currentTarget)}
+          >
+            {title  && <div className="card-title">{title}</div>}
+            {text   && <div className="card-text">{text}</div>}
+            {stat   && <div className="card-stat">{stat}</div>}
+            {statLabel && <div className="card-stat-label">{statLabel}</div>}
+            <div className="card-number">{number}</div>
+          </div>
+        ))}
 
-        {/* Card 2 — spans 1 col (orange stat: 500+) */}
-        <div
-          className="card card-stat-orange"
-          onMouseMove={handleMove2}
-          onMouseLeave={() => { setX2('0px'); setY2('0px'); }}
-          style={{ '--x': x2, '--y': y2 }}
-        >
-          <div className="card-stat">500+</div>
-          <div className="card-stat-label">Exhibitors</div>
+     
+        <div id="card5" className="card card-accent">
+          <div className="card-accent-text">More panels · workshops · exhibitions ↗</div>
         </div>
-
-        {/* Card 3 — spans 1 col (white stat: 20k) */}
-        <div
-          className="card card-stat-white"
-          onMouseMove={handleMove3}
-          onMouseLeave={() => { setX3('0px'); setY3('0px'); }}
-          style={{ '--x': x3, '--y': y3 }}
-        >
-          <div className="card-stat">20k</div>
-          <div className="card-stat-label">Attendees</div>
-          
-        </div>
-
-        {/* Card 4 — spans 2 cols */}
-        <div
-          className="card card-creative"
-          onMouseMove={handleMove4}
-          onMouseLeave={() => { setX4('0px'); setY4('0px'); }}
-          style={{ '--x': x4, '--y': y4 }}
-        >
-          <div className="card-title">Creative Technology</div>
-          <div className="card-text">Discover cutting-edge tools, AI platforms, and digital mediums driving the next wave of pan-African creation.</div>
-          <div className="card-number">02</div>
-        </div>
-
       </div>
     </section>
   );

@@ -1,9 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { supabase } from "../supabase";
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './sec6.css';
-const Sec6 = ( { activeFilter } ) => {
-    const [exhibitors, setExhibitor] = useState([]);
- 
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Sec6 = ({ activeFilter }) => {
+  const [exhibitors, setExhibitor] = useState([]);
+  const gridRef = useRef(null);
+
   useEffect(() => {
     const getExhibitor = async () => {
       const res = await supabase.from("exhibitor").select(`
@@ -20,42 +26,66 @@ const Sec6 = ( { activeFilter } ) => {
     };
     getExhibitor();
   }, []);
+
  
+  useEffect(() => {
+    if (!gridRef.current) return;
+
+    const cards = gridRef.current.querySelectorAll('.ex-card');
+    if (!cards.length) return;
+
   
+    ScrollTrigger.getAll().forEach(st => st.kill());
+
+    gsap.set(cards, { opacity: 0, y: 50 });
+
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: gridRef.current,
+        start: 'top 90%',
+        end: 'bottom 30%',
+        scrub: 1,
+      },
+    }).to(cards, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.12,
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach(st => st.kill());
+    };
+  }, [exhibitors, activeFilter]);
+
   const getInitials = (name) => {
     if (!name) return '';
     return name.split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase();
   };
- 
+
   return (
-    <div className="exhibitor-grid">
+    <div className="exhibitor-grid" ref={gridRef}>
       {exhibitors.map((item) => {
- 
-      
         if (activeFilter && activeFilter !== 'ALL') {
           if (item.category?.toUpperCase() !== activeFilter.toUpperCase()) {
             return null;
           }
         }
- 
+
         return (
           <div className="ex-card" key={item.id}>
- 
-          
             <span className="ex-card-initials">{getInitials(item.exhibitor_name)}</span>
- 
-           
+
             <div className="ex-card-top">
               <span className="ex-card-badge">{item.category}</span>
             </div>
- 
-         
+
             <div className="ex-card-body">
               <h3 className="ex-card-name">{item.exhibitor_name}</h3>
               <p className="ex-card-location">{item.location}</p>
             </div>
- 
-         
+
             <div className="ex-card-footer">
               <a href="/#" className="ex-card-explore">
                 EXPLORE
@@ -65,12 +95,11 @@ const Sec6 = ( { activeFilter } ) => {
               </a>
               <span className="ex-card-booth">{item.booths?.booth_number}</span>
             </div>
- 
           </div>
         );
       })}
     </div>
   );
 };
- 
+
 export default Sec6;

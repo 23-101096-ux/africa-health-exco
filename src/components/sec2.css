@@ -1,4 +1,4 @@
-.cards-section {
+/* .cards-section {
     position: relative !important;
     margin-top: 100px !important;      
     margin-bottom: 50px;          
@@ -72,7 +72,7 @@
     max-width: 380px;
   }
   
-  /* ===== STAT CARDS ===== */
+ 
   .card-stat {
     font-family: 'Playfair Display', Georgia, serif;
     font-size: 72px;
@@ -98,7 +98,7 @@
     color: #fff;
   }
 
-  /* ===== RESPONSIVE ===== */
+
   @media (max-width: 1200px) {
     .cards-section {
       padding: 0 40px;
@@ -122,4 +122,184 @@
     .card-stat {
       font-size: 56px;
     }
-  }
+  } 
+
+
+
+
+  /* ============================================
+   SEC2.CSS — Cards / Stats Section
+   ============================================ */
+
+.cards-section {
+  padding: 100px 48px 80px;
+  background: #161410;
+  position: relative;
+}
+
+/* ---------- Section header ---------- */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+.section-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #E8732A;
+}
+.section-tag::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: #E8732A;
+}
+.section-location {
+  font-size: 13px;
+  color: #7A6F63;
+}
+
+/* ---------- Grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto;
+  gap: 16px;
+}
+
+/* ---------- Base card ---------- */
+.card {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  will-change: transform;
+  cursor: none;
+
+}
+.card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(232, 115, 42, 0.1), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+.card:hover::after { opacity: 1; }
+
+/* ---------- Card variants ---------- */
+.card-large {
+  grid-column: span 2;
+  grid-row: 1;
+  background: v#161410;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-stat-orange {
+  grid-column: span 1;
+  grid-row: 1;
+  background: #E8732A;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 240px;
+}
+
+.card-stat-white {
+  grid-column: span 1;
+  grid-row: 1;
+  background: #F2EDE4;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 240px;
+}
+
+.card-creative {
+  grid-column: span 2;
+  grid-row: 2;
+  background: #2A2620;;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.card-accent {
+  grid-column: span 2;
+  grid-row: 2;
+  background: #161410;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  border: 1px dashed rgba(232, 115, 42, 0.2);
+}
+
+/* ---------- Card content ---------- */
+.card-number {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 72px;
+  color: rgba(255, 255, 255, 0.05);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.card-stat-white .card-number { color: rgba(0, 0, 0, 0.06); }
+.card-stat-orange .card-number { color: rgba(0, 0, 0, 0.08); }
+
+.card-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 26px;
+  font-style: italic;
+  color:#F2EDE4;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.card-text {
+  font-size: 14px;
+  line-height: 1.7;
+  color:    #7A6F63;;
+  max-width: 320px;
+}
+
+/* Stat cards */
+.card-stat {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 80px;
+  line-height: 1;
+}
+.card-stat-orange .card-stat { color: #0D0B08; }
+.card-stat-white  .card-stat { color: #0D0B08; }
+
+.card-stat-label {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+.card-stat-orange .card-stat-label { color: rgba(13, 11, 8, 0.6); }
+.card-stat-white  .card-stat-label { color: rgba(13, 11, 8, 0.5); }
+
+/* Teaser card text */
+.card-accent-text {
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(232, 115, 42, 0.4);
+  text-align: center;
+}

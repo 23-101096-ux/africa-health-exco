@@ -1,66 +1,179 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import './sec1.css';
-import OrangeTickter from '../components/orangetickter';
+
+
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Sec1 = () => {
-    return (
-        <section className='hero-sec'>
-          <div className="hero-content">
-            
-            <div className="hero-title">
-              <h1>
-                <span className="line-1">Discover</span>
-                <span className="line-2 orange">Africa's</span>
-                <span className="line-3">Creative</span>
-              </h1>
+  const heroRef = useRef(null);
+
+  useEffect(() => {
+
+    const fallback = () => {
+      document.querySelectorAll('.hero-eyebrow, .hero-sub, .hero-actions, .hero-right, .hero-stat-badge')
+        .forEach(el => el.style.opacity = 1);
+
+      document.querySelectorAll('.hero-title .line span')
+        .forEach(el => el.style.transform = 'translateY(0)');
+    };
+
+    try {
+    
+      gsap.to(['#l1', '#l2', '#l3'], {
+        y: 0,
+        duration: 0.9,
+        ease: 'power4.out',
+        stagger: 0.12,
+        delay: 0.1,
+      });
+
+     
+      gsap.to(['.hero-eyebrow', '.hero-sub', '.hero-actions'], {
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: 0.15,
+        delay: 0.4,
+      });
+
+   
+      gsap.to('.hero-right', {
+        opacity: 1,
+        duration: 0.8,
+        delay: 0.3,
+      });
+
+     
+      gsap.to(['.badge-top', '.badge-bot'], {
+        opacity: 1,
+        x: 0,
+        duration: 0.8,
+        ease: 'back.out(1.7)',
+        stagger: 0.2,
+        delay: 0.8,
+      });
+
+   
+      gsap.to('.hero-right', {
+        scrollTrigger: {
+          trigger: '#hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+        y: -80,
+      });
+
+     
+      const handleMouseMove = (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 20;
+        const y = (e.clientY / window.innerHeight - 0.5) * 20;
+        gsap.to('.hero-bg-grid', { x, y, duration: 0.8 });
+      };
+
+      const el = heroRef.current;
+      el?.addEventListener('mousemove', handleMouseMove);
+
+      return () => el?.removeEventListener('mousemove', handleMouseMove);
+
+    } catch (e) {
+      console.error("GSAP failed, fallback applied", e);
+      fallback();
+    }
+  }, []);
+
+  return (
+    <section className="hero-sec" id="hero" ref={heroRef}>
+      <div className="hero-bg-grid" />
+      <div className="hero-noise" />
+      <div className="float-dot" />
+      <div className="float-dot" />
+      <div className="float-dot" />
+
+      <div className="hero-content">
+       
+        <div className="hero-left">
+          <div className="hero-eyebrow">
+            <div className="hero-eyebrow-line" />
+            <div className="hero-eyebrow-text">
+              Africa Creative Festival · Cairo 2026
             </div>
+          </div>
 
-            <div className="circles-container">
-              <div className="ring ring-outer"></div>
-              <div className="ring ring-mid"></div>
-              <div className="ring ring-inner"></div>
+          <div className="hero-title">
+            <div className="line l1"><span id="l1">Discover</span></div>
+            <div className="line l2"><span id="l2">Africa's</span></div>
+            <div className="line l3"><span id="l3">Creative</span></div>
+          </div>
 
-              <div className="model-viewer-wrapper">
-                <model-viewer
-                  src="/human_heart_ed.glb"
-                  alt="3D Heart Model"
-                  auto-rotate
-                  rotation-per-second="30deg"
-                  camera-controls
-                  disable-zoom
-                  disable-pan
-                  exposure="1.2"
-                  shadow-intensity="0"
-                  style={{ background: 'transparent', width: '100%', height: '100%' }}
-                >
-                  <div className="heart-fallback" slot="poster">
-                    <svg width="100" height="90" viewBox="0 0 100 90" fill="none">
-                      <path
-                        d="M50 80 C50 80, 5 50, 5 25 C5 10, 15 3, 27 3 C38 3, 45 10, 50 18 C55 10, 62 3, 73 3 C85 3, 95 10, 95 25 C95 50, 50 80, 50 80Z"
-                        fill="rgba(255,255,255,0.85)"
-                        stroke="rgba(232,139,42,0.6)"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </div>
-                </model-viewer>
+          <p className="hero-sub">
+            The continent's most ambitious gathering of artists, designers,
+            innovators, and cultural leaders. Four days. One city. Infinite possibility.
+          </p>
+
+          <div className="hero-actions">
+            <a href="/#" className="enter-btn">
+              <span>Enter</span>
+              <span className="arrow">↗</span>
+            </a>
+            <div className="hero-date">
+              <strong>May 15–18, 2026</strong> · Cairo, Egypt
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT */}
+        <div className="hero-right">
+          <div className="rings-wrap">
+            <div className="ring ring-outer" />
+            <div className="ring ring-mid" />
+            <div className="ring ring-inner" />
+          </div>
+
+          <div className="model-wrap">
+            <model-viewer
+              src="/male_full_body_ecorche.glb"
+              alt="3D Anatomy Model"
+              auto-rotate
+              camera-controls
+              disable-zoom
+              disable-pan
+              exposure="1.4"
+              shadow-intensity="0"
+              camera-orbit="0deg 80deg 200%"
+              style={{ background: 'transparent' }}
+            >
+              <div slot="poster" className="model-poster">
+                <div style={{ color: '#E8732A' }}>Loading...</div>
               </div>
+            </model-viewer>
+          </div>
+
+          <div className="hero-stat-badge badge-top">
+            <div className="badge-icon">✦</div>
+            <div>
+              <div className="badge-num">500+</div>
+              <div className="badge-label">Exhibitors</div>
             </div>
-
           </div>
 
-          <div className="date-badge">
-            <div className="date-line"><strong>May 15–18, 2026</strong></div>
-            <div className="date-line">Cairo, Egypt</div>
+          <div className="hero-stat-badge badge-bot">
+            <div className="badge-num">20K</div>
+            <div className="badge-label">Attendees Expected</div>
           </div>
+        </div>
+      </div>
 
-          <a href="#" className="enter-btn">
-            <span>Enter</span>
-            <span className="arrow">↗</span>
-          </a>
+      <div className="scroll-hint">
+        <div className="scroll-hint-text">Scroll</div>
+        <div className="scroll-hint-line" />
+      </div>
+    </section>
+  );
+};
 
-          <OrangeTickter />
-        </section>
-    );
-}
- 
 export default Sec1;

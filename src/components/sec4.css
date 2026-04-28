@@ -1,63 +1,146 @@
-.main-SEC{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #F5F0E8;
-    flex-direction: column;
-    height: auto;
-    padding: 50px;
+/* ============================================
+   SEC4.CSS — CTA / Join Us Section
+   ============================================ */
 
-}
-.main-SEC h1{
-    font-family: 'Instrument Serif', serif;
-    font-size: 70px;
-    font-weight: 500;
-    color: #000000;
-    margin-bottom: 0;
-    text-align: center;
-}
-.main-SEC h2{
-    font-family: 'Instrument Serif', serif;
-    font-size: 70px;
-    font-weight: 500;
-    color: #E8651A;
-    text-align: center;
-    margin-top: 0;
-}
-.secure-btn {
-    display: inline-flex;
+   .cta-sec {
+    position: relative;
+    overflow: hidden;
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px; 
-    margin-top: 0px;
-    background-color: transparent;
-    border: 2px solid #000000;
-    border-radius: 100px;
-    padding: 18px 45px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: 'JetBrains Mono', monospace;
-    color: #000000;
-    /* font-family: 'Inter', sans-serif;  */
-    font-size: 16px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.3em; 
+    padding: 100px 48px 140px;
+    background: var(--dark);
   }
   
-  .btn-arrow {
-    font-size: 20px;
+
+  .cta-bg-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(232, 115, 42, 0.08);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ringPulse 8s ease-in-out infinite;
+    pointer-events: none;
+  }
+  .cta-bg-ring:nth-child(1) { width: 900px; height: 900px; animation-delay: 0s;  border-color: rgba(232, 115, 42, 0.06); }
+  .cta-bg-ring:nth-child(2) { width: 650px; height: 650px; animation-delay: 1s;  border-color: rgba(232, 115, 42, 0.11); }
+  .cta-bg-ring:nth-child(3) { width: 400px; height: 400px; animation-delay: 2s;  border-color: rgba(232, 115, 42, 0.18); }
+  
+  @keyframes ringPulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.8; }
+    50%       { transform: translate(-50%, -50%) scale(1.04); opacity: 1;   }
+  }
+  
+
+  .cta-label {
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #E8732A;
+    margin-bottom: 20px;
     display: flex;
     align-items: center;
-    margin-top: -2px; 
+    gap: 10px;
+    position: relative;
+    z-index: 2;
+    opacity: 0;           
+    transform: translateY(20px);
+  }
+  .cta-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: #E8732A;;
   }
   
-  .secure-btn:hover {
-    background-color: #E8651A;
-    color: #ffffff;
+
+  .cta-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 11vw, 160px);
+    line-height: 0.88;
+    text-align: center;
+    color:  #F2EDE4;
+    position: relative;
+    z-index: 2;
+    opacity: 0;         
+    transform: translateY(30px);
+  }
+  .cta-headline .orange { color: #E8732A;; }
+  
+
+  .cta-btn-wrap {
+    margin-top: 56px;
+    position: relative;
+    z-index: 2;
+    opacity: 0;          
+    transform: translateY(20px);
   }
   
-  .secure-btn:active {
-    transform: scale(0.98);
+  .secure-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: transparent;
+    border: 1.5px solid #E8732A;
+    color:  #F2EDE4;
+    padding: 18px 40px;
+    border-radius: 60px;
+    font-size: 15px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: none;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.35s;
+  }
+  
+
+  .secure-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #E8732A;
+    border-radius: 60px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .secure-btn:hover::before { transform: scaleX(1); }
+  .secure-btn:hover { color:  #0D0B08; }
+  
+  .btn-text,
+  .btn-arrow {
+    position: relative;
+    z-index: 1;
+  }
+  .btn-arrow { font-size: 20px; }
+  
+
+  .cta-meta {
+    margin-top: 32px;
+    font-size: 13px;
+    color: #7A6F63;
+    display: flex;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+    opacity: 0;         
+    transform: translateY(16px);
+  }
+  .cta-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cta-meta-dot {
+    width: 6px;
+    height: 6px;
+    background: #E8732A;
+    border-radius: 50%;
+    flex-shrink: 0;
   }
