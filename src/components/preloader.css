@@ -1,0 +1,175 @@
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background:  #0D0B08;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    will-change: transform;
+  }
+  
+  
+  .pl-bars {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .pl-bar {
+    flex: 1;
+    background: #0D0B08;
+    transform-origin: bottom;
+
+    will-change: transform;
+  }
+
+  .pl-bar:nth-child(even) {
+    background: #111009;
+  }
+  
+
+  .pl-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(232,115,42,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,115,42,0.04) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .pl-center {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  
+
+  .pl-logo-wrap {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .pl-logo-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(232,115,42,0.2);
+    animation: ringPulse 3s ease-in-out infinite;
+  }
+  .pl-ring2 {
+    inset: -16px;
+    border-color: rgba(232,115,42,0.1);
+    animation-delay: 0.5s;
+  }
+  
+  @keyframes ringPulse {
+    0%, 100% { transform: scale(1);    opacity: 0.8; }
+    50%       { transform: scale(1.06); opacity: 1;   }
+  }
+  
+  .pl-africa {
+    width: 64px;
+    height: 74px;
+    position: relative;
+    z-index: 2;
+    animation: africaPulse 2s ease-in-out infinite;
+  }
+  @keyframes africaPulse {
+    0%, 100% { transform: scale(1) rotate(-2deg); }
+    50%       { transform: scale(1.06) rotate(2deg); }
+  }
+  
+
+  .pl-wordmark {
+    display: flex;
+    gap: 12px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px, 6vw, 72px);
+    letter-spacing: 0.06em;
+    line-height: 1;
+  }
+  .pl-word        { color: var(--cream, #F2EDE4); }
+  .pl-word.pl-orange { color: var(--orange, #E8732A); }
+  
+
+  .pl-tagline {
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text-muted, #7A6F63);
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .pl-tagline::before,
+  .pl-tagline::after {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--orange, #E8732A);
+    opacity: 0.5;
+  }
+  
+
+  .pl-bottom {
+    position: absolute;
+    bottom: 40px;
+    left: 48px;
+    right: 48px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+
+  .pl-progress-track {
+    flex: 1;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+    position: relative;
+    overflow: hidden;
+    border-radius: 1px;
+  }
+  .pl-progress-fill {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    background: var(--orange, #E8732A);
+    border-radius: 1px;
+    transition: width 0.05s linear;
+    box-shadow: 0 0 8px rgba(232,115,42,0.6);
+  }
+  
+
+  .pl-counter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: var(--orange, #E8732A);
+    line-height: 1;
+    min-width: 48px;
+    text-align: right;
+    animation: counterGlow 0.15s ease-in-out;
+  }
+  
+  /* ---------- Responsive ---------- */
+  @media (max-width: 600px) {
+    .pl-wordmark { font-size: 40px; }
+    .pl-bottom   { left: 24px; right: 24px; bottom: 28px; }
+  }
