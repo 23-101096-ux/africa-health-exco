@@ -124,6 +124,16 @@
   .view-profile-btn:hover svg {
     transform: translate(3px, -3px);
   }
+  .heading-ghost,
+.heading-main,
+.exhibitor-image-wrap,
+.exhibitor-meta,
+.exhibitor-name,
+.exhibitor-desc,
+.view-profile-btn {
+  opacity: 1 !important;   
+  transform: none;          
+}
    
   /* ===== RESPONSIVE ===== */
   @media (max-width: 1400px) {

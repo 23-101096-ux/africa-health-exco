@@ -1,135 +1,4 @@
-/* .cards-section {
-    position: relative !important;
-    margin-top: 100px !important;      
-    margin-bottom: 50px;          
-    z-index: 10;                  
-    display: block;
-    background-color: transparent;
-    padding: 0 80px;
-  }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    width: 100%;
-  }
 
-
-  .card-large {
-    grid-column: span 2;
-  }
-
- 
-  .card-creative {
-    grid-column: span 2;
-  }
-  
-
-  .card {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
-    padding: 40px;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    background: #1a1a1a;
-    transition: transform 0.15s ease, border-color 0.3s ease;
-    will-change: transform;
-  }
-  
-  .card:hover {
-    border-color: rgba(232, 139, 42, 0.3);
-  }
-  
-
-  .card-number {
-    position: absolute;
-    bottom: -20px;
-    right: 20px;
-    font-size: 140px;
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.04);
-    line-height: 1;
-    pointer-events: none;
-    user-select: none;
-  }
-  
-
-  .card-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 28px;
-    font-weight: 400;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  
-  .card-text {
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.5);
-    line-height: 1.7;
-    max-width: 380px;
-  }
-  
- 
-  .card-stat {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 72px;
-    font-weight: 400;
-    line-height: 1;
-    margin-bottom: 12px;
-  }
-  
-  .card-stat-label {
-    font-family: Arial, sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.4);
-  }
-  
-
-  .card-stat-orange .card-stat {
-    color: #E88B2A;
-  }
-  
-  .card-stat-white .card-stat {
-    color: #fff;
-  }
-
-
-  @media (max-width: 1200px) {
-    .cards-section {
-      padding: 0 40px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .cards-section {
-      padding: 0 20px;
-    }
-
-    .grid {
-      grid-template-columns: 1fr;
-    }
-
-    .card-large,
-    .card-creative {
-      grid-column: span 1;
-    }
-
-    .card-stat {
-      font-size: 56px;
-    }
-  } 
-
-
-
-
-  /* ============================================
-   SEC2.CSS — Cards / Stats Section
-   ============================================ */
 
 .cards-section {
   padding: 100px 48px 80px;
@@ -137,7 +6,7 @@
   position: relative;
 }
 
-/* ---------- Section header ---------- */
+
 .section-header {
   display: flex;
   align-items: center;
@@ -164,7 +33,7 @@
   color: #7A6F63;
 }
 
-/* ---------- Grid ---------- */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -172,7 +41,7 @@
   gap: 16px;
 }
 
-/* ---------- Base card ---------- */
+
 .card {
   position: relative;
   border-radius: 20px;
@@ -194,11 +63,11 @@
 }
 .card:hover::after { opacity: 1; }
 
-/* ---------- Card variants ---------- */
+
 .card-large {
   grid-column: span 2;
   grid-row: 1;
-  background: v#161410;
+  background: #161410;
   min-height: 240px;
   display: flex;
   flex-direction: column;
@@ -246,7 +115,7 @@
   border: 1px dashed rgba(232, 115, 42, 0.2);
 }
 
-/* ---------- Card content ---------- */
+
 .card-number {
   position: absolute;
   bottom: 28px;
@@ -277,7 +146,7 @@
   max-width: 320px;
 }
 
-/* Stat cards */
+
 .card-stat {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 80px;
@@ -295,11 +164,302 @@
 .card-stat-orange .card-stat-label { color: rgba(13, 11, 8, 0.6); }
 .card-stat-white  .card-stat-label { color: rgba(13, 11, 8, 0.5); }
 
-/* Teaser card text */
+
 .card-accent-text {
   font-size: 12px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: rgba(232, 115, 42, 0.4);
   text-align: center;
+}
+@media (max-width: 1400px) {
+  .cards-section {
+    padding: 80px 40px 64px;
+  }
+ 
+  .card-stat {
+    font-size: 68px;
+  }
+ 
+  .card-title {
+    font-size: 23px;
+  }
+}
+ 
+
+@media (max-width: 1200px) {
+  .cards-section {
+    padding: 72px 32px 56px;
+  }
+ 
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+ 
+
+  .card-large {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+ 
+  .card-stat-orange {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+ 
+  .card-stat-white {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+ 
+  .card-creative {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+ 
+  .card-accent {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+ 
+  .card-stat {
+    font-size: 64px;
+  }
+ 
+  .card-title {
+    font-size: 22px;
+  }
+}
+ 
+
+@media (max-width: 900px) {
+  .cards-section {
+    padding: 60px 24px 48px;
+  }
+ 
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 36px;
+  }
+ 
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+ 
+  .card-large,
+  .card-creative,
+  .card-accent {
+    grid-column: span 2;
+  }
+ 
+  .card-stat-orange,
+  .card-stat-white {
+    grid-column: span 1;
+    min-height: 200px;
+  }
+ 
+  .card {
+    padding: 24px;
+  }
+ 
+  .card-stat {
+    font-size: 56px;
+  }
+ 
+  .card-title {
+    font-size: 21px;
+  }
+ 
+  .card-number {
+    font-size: 56px;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+ 
+
+@media (max-width: 700px) {
+  .cards-section {
+    padding: 48px 20px 40px;
+  }
+ 
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+ 
+ 
+  .card-large,
+  .card-stat-orange,
+  .card-stat-white,
+  .card-creative,
+  .card-accent {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+ 
+  
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ 
+  .card-large,
+  .card-creative,
+  .card-accent {
+    grid-column: span 2;
+  }
+ 
+  .card-stat-orange,
+  .card-stat-white {
+    grid-column: span 1;
+    min-height: 180px;
+  }
+ 
+  .card {
+    padding: 20px;
+    border-radius: 16px;
+  }
+ 
+  .card-stat {
+    font-size: 52px;
+  }
+ 
+  .card-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+ 
+  .card-text {
+    font-size: 13px;
+  }
+ 
+  .card-number {
+    font-size: 48px;
+    bottom: 16px;
+    right: 16px;
+  }
+ 
+  .card-accent-text {
+    font-size: 11px;
+  }
+ 
+  .section-tag {
+    font-size: 10px;
+  }
+}
+ 
+
+@media (max-width: 400px) {
+  .cards-section {
+    padding: 40px 14px 32px;
+  }
+ 
+  .section-header {
+    margin-bottom: 24px;
+  }
+ 
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+ 
+  
+  .card-large,
+  .card-stat-orange,
+  .card-stat-white,
+  .card-creative,
+  .card-accent {
+    grid-column: span 1;
+    min-height: auto;
+  }
+ 
+  .card-stat-orange,
+  .card-stat-white {
+    min-height: 160px;
+  }
+ 
+  .card {
+    padding: 18px;
+    border-radius: 14px;
+  }
+ 
+  .card-stat {
+    font-size: 60px;
+  }
+ 
+  .card-title {
+    font-size: 19px;
+  }
+ 
+  .card-text {
+    font-size: 13px;
+    max-width: 100%;
+  }
+ 
+  .card-number {
+    font-size: 44px;
+    bottom: 12px;
+    right: 12px;
+  }
+ 
+  .section-location {
+    font-size: 11px;
+  }
+}
+ 
+
+@media (max-width: 300px) {
+  .cards-section {
+    padding: 32px 10px 24px;
+  }
+ 
+  .section-header {
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+ 
+  .section-tag {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+  }
+ 
+  .section-location {
+    display: none;
+  }
+ 
+  .grid {
+    gap: 6px;
+  }
+ 
+  .card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+ 
+  .card-stat {
+    font-size: 48px;
+  }
+ 
+  .card-title {
+    font-size: 17px;
+  }
+ 
+  .card-text {
+    font-size: 12px;
+  }
+ 
+  .card-number {
+    font-size: 36px;
+    bottom: 10px;
+    right: 10px;
+  }
+ 
+  .card-accent-text {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
 }

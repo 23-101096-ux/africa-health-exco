@@ -306,3 +306,252 @@ model-viewer {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(6px); }
 }
+@media (max-width: 1400px) {
+  .hero-content {
+    padding: 0 40px;
+    gap: 32px;
+  }
+ 
+  .rings-wrap {
+    width: 420px;
+    height: 420px;
+  }
+  .ring-outer { width: 420px; height: 420px; }
+  .ring-mid   { width: 315px; height: 315px; }
+  .ring-inner { width: 210px; height: 210px; }
+ 
+  .model-wrap {
+    width: 280px;
+    height: 580px;
+  }
+ 
+  .badge-top { right: -10px; }
+  .badge-bot { left: -20px; }
+}
+ 
+@media (max-width: 1200px) {
+  .hero-content {
+    padding: 0 32px;
+    gap: 24px;
+  }
+ 
+  .hero-right {
+    height: 480px;
+  }
+ 
+  .rings-wrap {
+    width: 360px;
+    height: 360px;
+  }
+  .ring-outer { width: 360px; height: 360px; }
+  .ring-mid   { width: 270px; height: 270px; }
+  .ring-inner { width: 180px; height: 180px; }
+ 
+  .model-wrap {
+    width: 240px;
+    height: 500px;
+  }
+ 
+  .badge-top { right: 0; top: 40px; }
+  .badge-bot { left: -10px; bottom: 60px; }
+ 
+  .badge-num  { font-size: 26px; }
+}
+ 
+
+@media (max-width: 900px) {
+  .hero-sec {
+    height: auto;
+    min-height: 100vh;
+    padding-top: 80px;
+    padding-bottom: 100px;
+  }
+ 
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 0 28px;
+    gap: 48px;
+  }
+ 
+
+  .hero-right {
+    height: 400px;
+    width: 100%;
+    opacity: 1; 
+  }
+ 
+  .rings-wrap {
+    width: 320px;
+    height: 320px;
+  }
+  .ring-outer { width: 320px; height: 320px; }
+  .ring-mid   { width: 240px; height: 240px; }
+  .ring-inner { width: 160px; height: 160px; }
+ 
+  .model-wrap {
+    width: 200px;
+    height: 420px;
+  }
+ 
+  .badge-top {
+    top: 20px;
+    right: 20px;
+  }
+  .badge-bot {
+    bottom: 20px;
+    left: 20px;
+  }
+ 
+  .hero-sub {
+    max-width: 100%;
+  }
+ 
+  .scroll-hint {
+    bottom: 24px;
+  }
+}
+ 
+
+@media (max-width: 700px) {
+  .hero-content {
+    padding: 0 20px;
+    gap: 36px;
+  }
+ 
+  .hero-eyebrow {
+    margin-bottom: 20px;
+  }
+ 
+  .hero-right {
+    height: 340px;
+  }
+ 
+  .rings-wrap {
+    width: 280px;
+    height: 280px;
+  }
+  .ring-outer { width: 280px; height: 280px; }
+  .ring-mid   { width: 210px; height: 210px; }
+  .ring-inner { width: 140px; height: 140px; }
+ 
+  .model-wrap {
+    width: 170px;
+    height: 360px;
+  }
+ 
+  .hero-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 28px;
+  }
+ 
+  .badge-top {
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .badge-bot {
+    padding: 10px 14px;
+  }
+  .badge-num    { font-size: 22px; }
+  .badge-icon   { width: 32px; height: 32px; font-size: 14px; }
+  .badge-label  { font-size: 10px; }
+ 
+  .float-dot:nth-child(5) { display: none; }
+}
+ 
+
+@media (max-width: 400px) {
+  .hero-sec {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+ 
+  .hero-content {
+    padding: 0 16px;
+    gap: 28px;
+  }
+ 
+  .hero-eyebrow-text { font-size: 10px; letter-spacing: 0.12em; }
+  .hero-eyebrow-line { width: 28px; }
+ 
+  .hero-sub {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+ 
+  .enter-btn {
+    padding: 12px 22px;
+    font-size: 13px;
+  }
+ 
+  .hero-date { font-size: 12px; }
+ 
+  .hero-right {
+    height: 280px;
+  }
+ 
+  .rings-wrap {
+    width: 220px;
+    height: 220px;
+  }
+  .ring-outer { width: 220px; height: 220px; }
+  .ring-mid   { width: 165px; height: 165px; }
+  .ring-inner { width: 110px; height: 110px; }
+ 
+  .model-wrap {
+    width: 140px;
+    height: 290px;
+  }
+ 
+  .hero-stat-badge {
+    padding: 8px 12px;
+    border-radius: 12px;
+  }
+  .badge-num    { font-size: 18px; }
+  .badge-top    { top: 10px; right: 10px; }
+  .badge-bot    { bottom: 10px; left: 10px; }
+ 
+  .scroll-hint { bottom: 16px; }
+  .scroll-hint-line { height: 28px; }
+}
+ 
+
+@media (max-width: 300px) {
+  .hero-content {
+    padding: 0 12px;
+  }
+ 
+  .hero-eyebrow { display: none; }
+ 
+  .hero-right {
+    height: 220px;
+  }
+ 
+  .rings-wrap {
+    width: 160px;
+    height: 160px;
+  }
+  .ring-outer { width: 160px; height: 160px; }
+  .ring-mid   { width: 120px; height: 120px; }
+  .ring-inner { width: 80px;  height: 80px;  }
+ 
+  .model-wrap {
+    width: 110px;
+    height: 230px;
+  }
+ 
+
+  .hero-stat-badge { display: none; }
+ 
+  .float-dot { display: none; }
+ 
+  .hero-actions { gap: 12px; margin-top: 20px; }
+ 
+  .enter-btn {
+    padding: 10px 18px;
+    font-size: 12px;
+  }
+ 
+  .scroll-hint { display: none; }
+}

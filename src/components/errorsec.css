@@ -55,7 +55,7 @@
   .nf-ring-1 {
     width: 700px;
     height: 700px;
-    border: 1px dashed rgba(232, 139, 42, 0.08);
+    border: 1px dashed rgba(209, 116, 17, 0.8);
   }
   
   .nf-ring-2 {
@@ -80,7 +80,7 @@
   .nf-ring-3 {
     width: 340px;
     height: 340px;
-    border: 1.5px dashed rgba(232, 139, 42, 0.18);
+    border: 1.5px dashed rgba(232, 139, 42, 0.10);
   }
   
   .nf-ring-3::after {

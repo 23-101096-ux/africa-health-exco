@@ -6,71 +6,74 @@ import img4 from '../assets/image 28.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
+
+const showAll = () => {
+  const els = document.querySelectorAll(
+    '.heading-ghost, .heading-main, .exhibitor-image-wrap, .exhibitor-meta, .exhibitor-name, .exhibitor-desc, .view-profile-btn'
+  );
+  els.forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+  });
+};
+
 const Sec5 = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
+
+    const safetyTimer = setTimeout(showAll, 2000);
+
+    let ctx;
+
+    try {
+      ctx = gsap.context(() => {
+
+        const trigger = {
           trigger: sectionRef.current,
-          start: 'top 85%',
-          end: 'bottom 30%',
-          scrub: false, 
-        },
-      });
+          start: 'top 90%',   
+          once: true,         
+          onEnter: () => clearTimeout(safetyTimer),
+        };
 
-    
-      tl.fromTo('.heading-ghost',
-        { opacity: 0, x: -80, skewX: -6 },
-        { opacity: 1, x: 0, skewX: 0, duration: 0.9, ease: 'expo.out' }
-      )
+        const tl = gsap.timeline({ scrollTrigger: trigger });
 
-     
-      .fromTo('.heading-main',
-        { opacity: 0, y: 40, skewX: -4 },
-        { opacity: 1, y: 0, skewX: 0, duration: 0.8, ease: 'expo.out' },
-        '-=0.5'
-      )
+        tl.fromTo('.heading-ghost',
+          { opacity: 0, x: -60 },
+          { opacity: 1, x: 0, duration: 0.7, ease: 'power3.out' }
+        )
+        .fromTo('.heading-main',
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+          '-=0.4'
+        )
+        .fromTo('.exhibitor-image-wrap',
+          { opacity: 0, x: -40 },
+          { opacity: 1, x: 0, duration: 0.8, ease: 'power3.out' },
+          '-=0.3'
+        )
+        .fromTo(['.exhibitor-meta', '.exhibitor-name', '.exhibitor-desc', '.view-profile-btn'],
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out', stagger: 0.1 },
+          '-=0.5'
+        );
 
-     
-      .fromTo('.exhibitor-image-wrap',
-        { opacity: 0, x: -60, scale: 0.96 },
-        { opacity: 1, x: 0, scale: 1, duration: 1, ease: 'power3.out' },
-        '-=0.4'
-      )
+      }, sectionRef);
 
-    
-      .fromTo('.exhibitor-meta',
-        { opacity: 0, y: 20, letterSpacing: '0.4em' },
-        { opacity: 1, y: 0, letterSpacing: '0.2em', duration: 0.7, ease: 'power2.out' },
-        '-=0.6'
-      )
+    } catch (e) {
+      console.error('GSAP sec5 failed:', e);
+      clearTimeout(safetyTimer);
+      showAll();
+    }
 
-     
-      .fromTo('.exhibitor-name',
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.85, ease: 'expo.out' },
-        '-=0.5'
-      )
+    ScrollTrigger.addEventListener('refresh', () => {
+      ScrollTrigger.refresh();
+    });
 
-    
-      .fromTo('.exhibitor-desc',
-        { opacity: 0, y: 25 },
-        { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' },
-        '-=0.45'
-      )
-
-
-      .fromTo('.view-profile-btn',
-        { opacity: 0, y: 16, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.5)' },
-        '-=0.3'
-      );
-
-    }, sectionRef);
-
-    return () => ctx.revert();
+    return () => {
+      clearTimeout(safetyTimer);
+      ctx?.revert();
+    };
   }, []);
 
   return (
