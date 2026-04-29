@@ -1,63 +1,81 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import './sec1.css';
-
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ReadyContext } from '../pathes'; 
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Sec1 = () => {
   const heroRef = useRef(null);
+  const ready = useContext(ReadyContext);
 
   useEffect(() => {
 
+    if (!ready) return;
+
     const fallback = () => {
       document.querySelectorAll('.hero-eyebrow, .hero-sub, .hero-actions, .hero-right, .hero-stat-badge')
-        .forEach(el => el.style.opacity = 1);
-
+        .forEach(el => {
+          el.style.opacity = '1';
+          el.style.transform = 'none';
+        });
       document.querySelectorAll('.hero-title .line span')
         .forEach(el => el.style.transform = 'translateY(0)');
     };
 
+    const safetyTimer = setTimeout(fallback, 2000);
+
     try {
-    
-      gsap.to(['#l1', '#l2', '#l3'], {
-        y: 0,
-        duration: 0.9,
-        ease: 'power4.out',
-        stagger: 0.12,
-        delay: 0.1,
-      });
+      
+      gsap.fromTo(
+        ['#l1', '#l2', '#l3'],
+        { y: '110%' },
+        {
+          y: '0%',
+          duration: 0.9,
+          ease: 'power4.out',
+          stagger: 0.12,
+          delay: 0.1,
+          onComplete: () => clearTimeout(safetyTimer),
+        }
+      );
+
+      
+      gsap.fromTo(
+        ['.hero-eyebrow', '.hero-sub', '.hero-actions'],
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          stagger: 0.15,
+          delay: 0.4,
+        }
+      );
 
      
-      gsap.to(['.hero-eyebrow', '.hero-sub', '.hero-actions'], {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        ease: 'power3.out',
-        stagger: 0.15,
-        delay: 0.4,
-      });
-
-   
-      gsap.to('.hero-right', {
-        opacity: 1,
-        duration: 0.8,
-        delay: 0.3,
-      });
+      gsap.fromTo(
+        '.hero-right',
+        { opacity: 0 },
+        { opacity: 1, duration: 0.8, delay: 0.3 }
+      );
 
      
-      gsap.to(['.badge-top', '.badge-bot'], {
-        opacity: 1,
-        x: 0,
-        duration: 0.8,
-        ease: 'back.out(1.7)',
-        stagger: 0.2,
-        delay: 0.8,
-      });
+      gsap.fromTo(
+        '.badge-top',
+        { opacity: 0, x: 20 },
+        { opacity: 1, x: 0, duration: 0.8, ease: 'back.out(1.7)', delay: 0.8 }
+      );
+      gsap.fromTo(
+        '.badge-bot',
+        { opacity: 0, x: -20 },
+        { opacity: 1, x: 0, duration: 0.8, ease: 'back.out(1.7)', delay: 1.0 }
+      );
 
-   
+      
       gsap.to('.hero-right', {
         scrollTrigger: {
           trigger: '#hero',
@@ -68,7 +86,7 @@ const Sec1 = () => {
         y: -80,
       });
 
-     
+      
       const handleMouseMove = (e) => {
         const x = (e.clientX / window.innerWidth - 0.5) * 20;
         const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -78,13 +96,17 @@ const Sec1 = () => {
       const el = heroRef.current;
       el?.addEventListener('mousemove', handleMouseMove);
 
-      return () => el?.removeEventListener('mousemove', handleMouseMove);
+      return () => {
+        clearTimeout(safetyTimer);
+        el?.removeEventListener('mousemove', handleMouseMove);
+      };
 
     } catch (e) {
       console.error("GSAP failed, fallback applied", e);
+      clearTimeout(safetyTimer);
       fallback();
     }
-  }, []);
+  }, [ready]); 
 
   return (
     <section className="hero-sec" id="hero" ref={heroRef}>
@@ -95,7 +117,7 @@ const Sec1 = () => {
       <div className="float-dot" />
 
       <div className="hero-content">
-       
+
         <div className="hero-left">
           <div className="hero-eyebrow">
             <div className="hero-eyebrow-line" />
@@ -126,7 +148,6 @@ const Sec1 = () => {
           </div>
         </div>
 
-        
         <div className="hero-right">
           <div className="rings-wrap">
             <div className="ring ring-outer" />
@@ -147,9 +168,6 @@ const Sec1 = () => {
               camera-orbit="0deg 80deg 200%"
               style={{ background: 'transparent' }}
             >
-              {/* <div slot="poster" className="model-poster">
-                <div style={{ color: '#E8732A' }}>Loading...</div>
-              </div> */}
             </model-viewer>
           </div>
 

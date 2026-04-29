@@ -3,13 +3,13 @@ import { gsap } from 'gsap';
 import './preloader.css';
 
 const Preloader = ({ onComplete }) => {
-  const loaderRef   = useRef(null);
-  const counterRef  = useRef(null);
-  const [count, setCount]   = useState(0);
+  const loaderRef  = useRef(null);
+  const counterRef = useRef(null);
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-   
     const obj = { val: 0 };
+
     const countTween = gsap.to(obj, {
       val: 100,
       duration: 1.8,
@@ -17,18 +17,18 @@ const Preloader = ({ onComplete }) => {
       onUpdate: () => setCount(Math.round(obj.val)),
     });
 
- 
     const exitTimer = setTimeout(() => {
       countTween.kill();
       setCount(100);
 
       const tl = gsap.timeline({
         onComplete: () => {
+       
+          window.dispatchEvent(new Event('preloader:done'));
           if (onComplete) onComplete();
         },
       });
 
-   
       tl.to('.pl-bar', {
         scaleY: 0,
         duration: 0.7,
@@ -36,7 +36,6 @@ const Preloader = ({ onComplete }) => {
         stagger: { each: 0.07, from: 'random' },
         transformOrigin: 'bottom',
       })
-   
       .to(loaderRef.current, {
         yPercent: -100,
         duration: 0.6,
@@ -56,24 +55,19 @@ const Preloader = ({ onComplete }) => {
   return (
     <div className="preloader" ref={loaderRef}>
 
-  
       <div className="pl-bars">
         {bars.map((_, i) => (
           <div key={i} className="pl-bar" />
         ))}
       </div>
 
-    
       <div className="pl-grid" />
 
-
       <div className="pl-center">
-
         <div className="pl-logo-wrap">
           <div className="pl-logo-ring" />
           <div className="pl-logo-ring pl-ring2" />
-          <svg className="pl-africa" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
-           
+          <svg className="pl-africa" viewBox="0 0 120 140" fill="none">
             <path
               d="M60 4 C72 4 88 12 92 28 C96 42 88 52 90 62
                  C93 76 102 82 100 96 C98 110 88 124 76 132
@@ -93,17 +87,12 @@ const Preloader = ({ onComplete }) => {
           <span className="pl-word pl-orange">Africa</span>
         </div>
 
-        <div className="pl-tagline">Wellcome to our websiet</div>
-
+        <div className="pl-tagline">Welcome to our website</div>
       </div>
 
-     
       <div className="pl-bottom">
         <div className="pl-progress-track">
-          <div
-            className="pl-progress-fill"
-            style={{ width: `${count}%` }}
-          />
+          <div className="pl-progress-fill" style={{ width: `${count}%` }} />
         </div>
         <div className="pl-counter" ref={counterRef}>
           {String(count).padStart(3, '0')}
