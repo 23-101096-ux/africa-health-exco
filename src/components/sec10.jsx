@@ -53,7 +53,7 @@ const Sec10 = () => {
         <p className="reg-title-overlay">Register</p>
 
         <model-viewer
-          src="/human_heart_3d.glb"
+          src="/humann_heart_3d.glb"
           auto-rotate
           camera-controls
           disable-zoom

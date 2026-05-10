@@ -1,10 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
+import { supabase } from '../supabase';
 import './header.css';
 import myLogo from '../assets/image 1.png';
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [navLinks, setNavLinks] = useState([]);
+
+
+  useEffect(() => {
+    getNavLinks();
+  }, []);
+
+
+  async function getNavLinks() {
+    const result = await supabase
+      .from('nav_links')
+      .select('*')
+      .order('order_index', { ascending: true });
+
+    if (result.data) {
+      setNavLinks(result.data);
+    }
+  }
 
   return (
     <header className="main-header">
@@ -14,7 +33,6 @@ const Header = () => {
           <img src={myLogo} alt="Health Africa Logo" />
         </div>
 
-        
         <div
           className={`menu-toggle ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -24,34 +42,20 @@ const Header = () => {
           <span></span>
         </div>
 
-        
         <nav className={`nav-component ${menuOpen ? "open" : ""}`}>
           <ul>
-            <li>
-              <NavLink to="/" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/exbition" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-                Exhibitors
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/floorplan" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-                Floor Plan
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/register" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-                Register
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact" className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}>
-                Contact
-              </NavLink>
-            </li>
+            {navLinks.map(function(link) {
+              return (
+                <li key={link.id}>
+                  <NavLink
+                    to={link.url}
+                    className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                  >
+                    {link.label}
+                  </NavLink>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 
