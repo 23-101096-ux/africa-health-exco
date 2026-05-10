@@ -51,7 +51,7 @@ function AnnouncementPopup() {
 
                     <div className="popup-info">
                         <span><img src={cc} alt="" />{popupData.date}</span>
-                        <span><img src={""} alt="" /> {popupData.time}</span>
+                        <span><img src={clock} alt="" /> {popupData.time}</span>
                     </div>
 
                     <button className="popup-btn">Reserve My Seat</button>
