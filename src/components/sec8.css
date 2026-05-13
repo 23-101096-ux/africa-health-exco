@@ -253,3 +253,136 @@
       gap: 8px;
     }
   }
+
+@media (max-width: 480px) {
+  .map-section {
+    padding: 40px 16px 50px;
+    overflow-x: hidden;
+  }
+
+  .map-layout {
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
+  .map-left {
+    width: 100%;
+    padding: 16px 12px;
+    border-radius: 10px;
+    margin-right: 20px !important;
+    box-sizing: border-box;
+  }
+
+  .map-title {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+
+  .halls-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .hall-card {
+    min-height: 120px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .hall-info {
+    padding: 14px;
+  }
+
+  .hall-icon {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 12px;
+  }
+
+  .hall-name {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .hall-pills {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .hall-pills span {
+    font-size: 10px;
+    padding: 2px 7px;
+  }
+
+  .map-right {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .details-header {
+    padding: 14px 16px;
+  }
+
+  .details-header h3 {
+    font-size: 16px;
+  }
+
+  .details-body {
+    padding: 0 16px 18px;
+  }
+
+  .details-icon {
+    height: 85px;
+    padding: 14px;
+  }
+
+  .details-name {
+    font-size: 15px;
+  }
+
+  .booths-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .booth-box {
+    padding: 10px 4px;
+    font-size: 11px;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .map-section {
+    padding: 32px 12px 40px;
+    overflow-x: hidden;
+  }
+
+  .map-left {
+    padding: 14px 10px;
+  }
+
+  .hall-info {
+    padding: 12px;
+  }
+
+  .hall-name {
+    font-size: 13px;
+  }
+
+  .hall-pills span {
+    font-size: 10px;
+    padding: 2px 6px;
+  }
+
+  .booths-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .booth-box {
+    font-size: 11px;
+    padding: 8px 4px;
+  }
+}

@@ -6,7 +6,6 @@ const Sec9 = () => {
 
     return (
       <div className="booth-preview-section">
-  
 
         <div className="booth-preview-header">
           <div>
@@ -20,15 +19,16 @@ const Sec9 = () => {
             Show 3D Model
           </button>
         </div>
-  
 
         <div className="booth-preview-viewer">
           {showModel ? (
             <model-viewer
-              src="health/public/3d_exhibition_stand_014.glb"
+              src="/exhibition_booth.glb"
               alt="3D Booth"
               auto-rotate
               camera-controls
+              shadow-intensity="1"
+              environment-image="neutral"
               style={{ width: '100%', height: '100%', background: 'transparent' }}
             />
           ) : (
@@ -43,7 +43,7 @@ const Sec9 = () => {
             </div>
           )}
         </div>
-  
+
       </div>
     );
   };

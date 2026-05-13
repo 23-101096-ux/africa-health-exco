@@ -17,7 +17,7 @@ html { scroll-behavior: smooth; }
   position: fixed;
   width: 12px;
   height: 12px;
-  background: var(--orange);
+  background: #FFA726;
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
